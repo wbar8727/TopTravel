@@ -15,7 +15,11 @@ import store from './src/store/Store'
 import Setup from './src/Setup'
 
 
+
+// ray membuat sesuatu perubahan
+
 // winario changes
+
 
 class App extends Component {
   render() {
