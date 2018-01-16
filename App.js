@@ -15,6 +15,7 @@ import store from './src/store/Store'
 import Setup from './src/Setup'
 
 
+// Change fachri
 // winario changes
 
 class App extends Component {
