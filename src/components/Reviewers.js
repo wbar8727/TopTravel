@@ -6,7 +6,9 @@ import { fetchReviewers } from '../actions'
 
 
 
+
 const gambar = 'http://assets.lfcimages.com/images/international/thumb-no-image-3.jpg'
+
 
 class Reviewers extends Component {
     state = {
@@ -36,23 +38,36 @@ class Reviewers extends Component {
         this.props.dispatch(fetchReviewers())
     }
 
-    render() {
+    _renderGridView(reviewers){
         return (
-            <View style={{ marginTop: 20, marginLeft: 10, marginRight: 0 }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                {
+                    reviewers.map((reviewers, id) => (
+                        <Image
+                            key={id}
+                            style={{ 
+                                margin: 10,
+                                width: 100, 
+                                height: 100, 
+                                borderRadius: 3 }}
+                            source={{ uri: reviewers.avatar }} />
+                    ))
+                }
+            </View>
+        )
+    }
+
+
+    render() {
+        console.log(this.props.reviewers)
+        return (
+            <View style={{ marginTop: 20, marginLeft: 10, marginRight: 10 }}>
                 <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 5 }}>Top Reviewers</Text>
 
                 {
                     this.props.reviewers.length > 0 ? (
-                        <View style={{ flexDirection: 'row' }}>
-                            {this.props.reviewers.map((data, index) => (
-                                <View>
-                                    <Image
-                                        style={{ width: 100, height: 100, marginRight: 20,
-                                            resizeMode: 'contain', borderRadius: 3 }}
-                                            source={{ uri: data.avatar }} />
-                                    <Text>{index}</Text>
-                                </View>
-                            ))}
+                        <View >
+                            {this._renderGridView(this.props.reviewers)}
                         </View>
                     ) : (null)
                 }
