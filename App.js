@@ -14,7 +14,7 @@ import { Provider } from 'react-redux'
 import store from './src/store/Store'
 import Setup from './src/Setup'
 
-
+// Change fachri
 
 
 class App extends Component {
